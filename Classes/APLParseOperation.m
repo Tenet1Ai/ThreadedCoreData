@@ -98,7 +98,6 @@ NSString *kEarthquakesMessageErrorKey = @"EarthquakesMsgErrorKey";
 }
 
 - (void)addEarthquakesToList:(NSArray *)earthquakes {
-    
     // a batch of earthquakes are ready to be added
     //
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -114,7 +113,7 @@ NSString *kEarthquakesMessageErrorKey = @"EarthquakesMsgErrorKey";
     Earthquake *earthquake = nil;
     for (earthquake in earthquakes) {
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"location = %@ AND date = %@", earthquake.location, earthquake.date];
-        
+        DLog("location = %@ AND date = %@", earthquake.location, earthquake.date);
         NSArray *fetchedItems = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         if (fetchedItems.count == 0) {
             // we found no duplicate earthquakes, so insert this new one
@@ -148,7 +147,7 @@ NSString *kEarthquakesMessageErrorKey = @"EarthquakesMsgErrorKey";
             // during development. If it is not possible to recover from the error, display an alert
             // panel that instructs the user to quit the application by pressing the Home button.
             //
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            DLog("Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
     }

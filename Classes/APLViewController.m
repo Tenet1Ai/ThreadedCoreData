@@ -76,7 +76,7 @@
 @implementation APLViewController
 
 - (void)viewDidLoad {
-    DLog(@"Path: %@", [self applicationDocumentsDirectory]);
+    DLog("Path: %@", [self applicationDocumentsDirectory]);
     [super viewDidLoad];
     
     self.earthquakeList = [NSMutableArray array];
