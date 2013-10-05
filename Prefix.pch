@@ -1,0 +1,12 @@
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+    #import <CoreData/CoreData.h>
+#endif
+
+#ifdef DEBUG
+# define DLog(fmt, ...) NSLog((@"[%s]\n" "[%s %d] " fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+# define DLog(...);
+#endif
+
